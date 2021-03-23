@@ -17,12 +17,13 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Группы" Command="{Binding OpenGroupList}" />
+            <Button Content="Редактировать" Command="{Binding EditList}"/>
         </Menu>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
             <TextBlock Text="Выбранная группа:"/>
             <ComboBox DisplayMemberPath="GroupName" ItemsSource="{Binding Groups}" SelectedItem="{Binding SelectedGroup}"/>
         </StackPanel>
-        <ListView Grid.Row="2" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}">
+        <ListView Grid.Row="2" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FullName}" />

@@ -11,21 +11,27 @@ namespace WpfApp15
         public GroupManager()
         {
             Groups.Add(new Group { GroupName = "1125" });
+            Groups.Add(new Group { GroupName = "1115" });
+            Groups.Add(new Group { GroupName = "1121" });
+            Groups.Add(new Group { GroupName = "1135" });
+            Groups.Add(new Group { GroupName = "1131" });
         }
-        
+
         internal void Edit(Group selectedGroup, Student selectedStudent)
         {
-            throw new NotImplementedException();
+            
         }
 
         internal void Remove(Group selectedGroup, Student selectedStudent)
         {
-            Groups.Find(g => g == selectedGroup).Students.Remove(selectedStudent);
+            selectedGroup?.Students.Remove(selectedStudent);
         }
 
         internal void CreateStudent(Group selectedGroup)
         {
-            Groups.Find(g => g == selectedGroup).Students.Add(new Student { LastName = "Example"});
+            selectedGroup?.Students.Add(new Student {  FirstName = "gdfdjfgdjfgdf", LastName = "sdgsdsddssd", FatherName = "fsffsssff", Address = "sdsdsdsds"});
+            selectedGroup?.Students.Add(new Student {  FirstName = "gdfdjfgdjfgdf", LastName = "sdgsdsddssd", FatherName = "fsffsssff", Address = "sdsdsdsds"});
+            selectedGroup?.Students.Add(new Student {  FirstName = "gdfdjfgdjfgdf", LastName = "sdgsdsddssd", FatherName = "fsffsssff", Address = "sdsdsdsds"});
         }
     }
 
