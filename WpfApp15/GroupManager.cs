@@ -6,7 +6,12 @@ namespace WpfApp15
 {
     class GroupManager
     {
-        public List<Group> Groups { get; set; }
+        public List<Group> Groups { get; set; } = new List<Group>();
+
+        public GroupManager()
+        {
+            Groups.Add(new Group { GroupName = "1125" });
+        }
         
         internal void Edit(Group selectedGroup, Student selectedStudent)
         {
@@ -20,13 +25,13 @@ namespace WpfApp15
 
         internal void CreateStudent(Group selectedGroup)
         {
-            Groups.Find(g => g == selectedGroup).Students.Add(new Student());
+            Groups.Find(g => g == selectedGroup).Students.Add(new Student { LastName = "Example"});
         }
     }
 
     class Group
     {
         public string GroupName { get; set; }
-        public List<Student> Students { get; set; }
+        public List<Student> Students { get; set; } = new List<Student>();
     }
 }

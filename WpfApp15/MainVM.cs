@@ -10,7 +10,7 @@ namespace WpfApp15
         Model model;
 
         public List<Group> Groups { get; set; }
-        public List<Student> Students { get => SelectedGroup.Students; set => SelectedGroup.Students = value; }
+        public List<Student> Students { get; set; }
 
         public Group SelectedGroup { get; set; }
         public Student SelectedStudent { get; set; }
@@ -23,10 +23,18 @@ namespace WpfApp15
         public MainVM()
         {
             model = new Model();
-
+            Groups = model.GetGroups();
             EditSelectedStudent = new MvvmCommand(() => model.EditStudent(SelectedGroup, SelectedStudent), () => SelectedStudent != null);
             RemoveSelectedStudent = new MvvmCommand(() => model.RemoveStudent(SelectedGroup, SelectedStudent), () => SelectedStudent != null);
             CreateStudent = new MvvmCommand(() => model.CreateStudent(SelectedGroup), () => true);
+
+            model.StudentsChanged += Model_StudentsChanged;
+        }
+
+        private void Model_StudentsChanged(object sender, EventArgs e)
+        {
+            Students = SelectedGroup.Students;
+            NotifyPropertyChanged("Students");
         }
     }
 }
